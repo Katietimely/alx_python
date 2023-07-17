@@ -1,0 +1,6 @@
+def reverse_string(string):
+    reverse_string = string[::-1]
+    return reverse_string
+
+
+print(reverse_string("alx python"))
