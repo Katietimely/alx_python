@@ -3,4 +3,7 @@ def reverse_string(string):
     return reverse_string
 
 
-print(reverse_string("alx python"))
+print(reverse_string("Hello"))
+print(reverse_string(""))
+print(reverse_string("madam"))
+print(reverse_string("Hello,world!"))

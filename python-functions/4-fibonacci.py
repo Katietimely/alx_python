@@ -16,5 +16,5 @@ def fibonacci_sequence(n):
 
 n = 10
 fib_sequence = fibonacci_sequence(n)
-print(fib_sequence)
+print(fib_sequence(6))
     
