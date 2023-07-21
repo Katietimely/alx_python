@@ -15,3 +15,5 @@ for char in password:
     else:
         has_digits =  False
 
+        
+
