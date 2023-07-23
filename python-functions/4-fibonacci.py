@@ -3,20 +3,17 @@
 def fibonacci_sequence(n):
     if n <= 0:
         return []
-    elif n == 1:
-        return[0]
-    elif n == 2:
-        return[0, 1]
 
-    sequence = [0, 1]
-    for _ in range(2, n):
-        next_number = sequence[-1] + sequence[-2]
-        sequence.append(next_number)
+sequence = [0, 1]
 
-    return sequence
+while len(sequence < n):
+    next_number = sequence[-1] + sequence[-2]
+    sequence.append(next_number)
 
 
-n = 10
-fib_sequence = fibonacci_sequence(n)
-print(fib_sequence(6))
-    
+return sequence
+
+print(fibonacci_sequence(6))
+print(fibonacci_sequence(1))
+print(fibonacci_sequence(0))
+print(fibonacci_sequence(20))
