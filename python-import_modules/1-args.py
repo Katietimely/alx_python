@@ -1,7 +1,7 @@
 #!/usr/bin/pyhon3
 
 
-import sys
+from args_program import sys
 
 if __name__ == "__main__":
      num_args = len(sys.argv) - 1
