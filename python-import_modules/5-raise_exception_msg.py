@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 
 def raise_exception_msg(message=""):
-    message = "i am beautiful"
-
+      raise NameError(message)
 
 
 if __name__ == "__main__":
