@@ -1,10 +1,11 @@
-#!/usr/bin/pyhon3
+#!/usr/bin/python3
 
 
 from main import argv
 
 def main():
     argv_lens = len(argv) - 1
+    print()
 
     if argv_lens == 0:
         print("0 arguements.")
