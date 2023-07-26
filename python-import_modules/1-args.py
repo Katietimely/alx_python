@@ -1,11 +1,13 @@
 #!/usr/bin/pyhon3
 
 
-from args_program import sys
+from main import argv
 
 if __name__ == "__main__":
-     num_args = len(sys.argv) - 1
 
+     num_args = len(argv) - 1
+
+     
      if num_args == 0:
           print("0 arguements.")
      
@@ -17,5 +19,5 @@ if __name__ == "__main__":
               
 
      if num_args > 0:
-        for num in range(1, len(sys.argv)):
-           print("{}:{[num]}".format(num, sys.argv))
+        for num in range(1, len(argv)):
+           print("{}:{[num]}".format(num, argv))
