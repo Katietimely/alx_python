@@ -13,11 +13,11 @@ def safe_print_division(a, b):
 a = 12
 b = 2
 result = safe_print_division(a, b)
-print("{} / {} = {}".format(a, b, result))
+print("{:d} / {:d} = {}".format(a, b, result))
 
 
 a = 12
 b = 0
 result = safe_print_division(a, b)
-print("{} / {} = {}".format(a, b, result))
+print("{:d} / {:d} = {}".format(a, b, result))
 
