@@ -7,6 +7,7 @@ def no_c(my_string):
         char_list.remove('C')
     return ''.join(char_list)
 
-print(no_c("Holberton School"))
-print(no_c("Chicago"))
-print((no_c("C is fun")))
+if __name__ == "__main__":
+    print(no_c("Holberton School"))
+    print(no_c("Chicago"))
+    print((no_c("C is fun")))

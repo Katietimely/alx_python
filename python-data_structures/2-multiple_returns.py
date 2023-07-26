@@ -5,4 +5,6 @@ def multiple_returns(sentence):
     return length, first
 sentence = "At Holberton School, I learnt C!"
 length, first = multiple_returns(sentence)
-print("Length: {:d} - First character: {}".format(length, first)) 
+
+if __name__ == "__main__":
+    print("Length: {:d} - First character: {}".format(length, first)) 
