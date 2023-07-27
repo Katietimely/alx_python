@@ -3,26 +3,16 @@
 
 from main import argv
 
-def main():
-    argv_lens = len(argv) - 1
-    print()
-
-    if argv_lens == 0:
-        print("0 arguements.")
-    elif argv_lens == 1:
-        print("1 arguement:")
-    else:
-        print("{} arguements:".format(argv_lens))
-
-     
-    if argv_lens > 0:
-       for i, arg in enumerate(argv[1:], 1):
-          print("{}: {}".format(i, arg))
-
-
 if __name__ == "__main__":
-    main()
+  argv_list = argv[1:]
+  num_args = len(argv_list)
 
+  if num_args == 0:
+    print("0 arguements.")
+  else:
+    print(f"{num_args} arguement{'s' if num_args > 1 else ''}:")
+    for i,arg in enumerate(argv_list,1):
+      print(f"{i}: {arg}")
 
               
      
