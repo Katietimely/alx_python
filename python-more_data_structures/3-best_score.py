@@ -11,12 +11,10 @@ def best_score(a_dictionary):
             max_score = value
             best_key = key
 
+
     return best_key
 
-if __name__ == "__main__":
-    a_dictionary = {'John': 12, 'Bob': 14, 'Mike': 14, 'Molly': 16, 'Adam': 10}
-    best_key = best_score(a_dictionary)
-    print("Best score: {}".format(best_key))
 
-    best_key = best_score(None)
-    print("Best score: {}".format(best_key))
+a_dictionary = {'John': 12, 'Bob': 14, 'Mike': 14, 'Molly': 16, 'Adam': 10}
+
+best_student = best_score(a_dictionary)
