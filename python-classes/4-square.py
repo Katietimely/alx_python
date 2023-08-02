@@ -20,9 +20,11 @@ class Square:
         self.__size = size
           
      def area(self):
+         """A method defining the area of a given space """
          return self.__size * self.__size
      
      def my_print(self):
+         """A method defining the size of a given space"""
          if self.__size == 0:
              print()
          else:
@@ -30,21 +32,24 @@ class Square:
                  print("#" * self.__size)
 
 
-if __name__ == "__main__":
-    my_square = Square(3)
-    my_square.my_print()
 
-    print("--")
+my_square = Square(3)
+"""a basic method to a method describing the attribute my_square and raising an exception"""
+my_square.my_print()
 
-    my_square.size = 10
-    my_square.my_print()
+print("--")
 
-    print("--")
+my_square.size = 10
+"""a basic method to a method describing the attribute my_square and raising an exception"""
+my_square.my_print()
 
-    my_square.size = 0
-    my_square.my_print()
+print("--")
 
-    print("--")
+my_square.size = 0
+"""a basic method to a method describing the attribute my_square and raising an exception"""
+my_square.my_print()
+
+print("--")
 
 
         
