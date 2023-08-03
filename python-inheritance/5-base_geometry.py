@@ -3,11 +3,22 @@
 class BaseGeometry:
     """basegeometry class"""
     def area(self):
-        """method area to get result"""
+        """method area to get result
+                  calculates the area
+        Raises:
+          Exception: with the message "area not implemented
+        """
         raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
-        """method integer_validator to determine whether an integer or not"""
+        """method integer_validator to determine whether an integer or not
+         Args:
+          name(str): the name of the value
+          value: the value has to be validated
+         Raises:
+          TypeError: if the value is not an integer
+          ValueError: if the value is less or equal to 0
+        """
         if not isinstance(value, int):
             raise TypeError("{} must be an integer".format(name))
         if value <= 0:
@@ -15,23 +26,4 @@ class BaseGeometry:
 
 
 
-bg = BaseGeometry()
 
-bg.integer_validator("my_int", 12)
-bg.integer_validator("width", 89)
-
-try:
-    bg.integer_validator("name", "John")
-except Exception as e:
-    print("[{}] {}".format(e.__class__.__name__, e))
-
-try:
-    bg.integer_validator("age", 0)
-except Exception as e:
-    print("[{}] {}".format(e.__class__.__name__, e))
-
-try:
-    bg.integer_validator("distance", -4)
-except Exception as e:
-    print("[{}] {}".format(e.__class__.__name__, e))
-    

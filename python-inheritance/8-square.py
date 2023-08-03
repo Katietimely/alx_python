@@ -46,8 +46,3 @@ class Square(Rectangle):
         """retuns the string represntation of the square"""
         return ("[Rectangle] {}/ {}".format(self._Rectangle__width, self._Rectangle__height))
             
-
-s = Square(13)
-
-print(s)
-print(s.area())

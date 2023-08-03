@@ -5,5 +5,6 @@ class BaseGeometry:
       with no methods in it
     """
     pass
-bg = BaseGeometry()
+
+
 
