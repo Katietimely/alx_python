@@ -1,25 +1,26 @@
-`   #!/usr/bin/python3
+#!/usr/bin/python3
 """
-this module has the class square and has private attributes and public attributes
+This class represent a square with a given size
+
+Attribute:
+    size(int):The size of the square(private attribute)
 """
 class Square:
-     """This class represent a square """
-     def __init__(self, size):
+     """This class represnt a square with a given size
+     """
+     def __init__(self, size=0):
+        """ intialize a square object with an optional size
+                  Args:
+           size(int): the size of the square(default is 0)
+        Raises:
+            typeerror:if size is not an integer
+            valueerror:if the size is less than  0
+          """
         self.__size = size
-        """ this is a method(function) with just one arguement"""
-
-if __name__ == "__main__":
-    my_square = Square(3)
-    """a basic function to a method describing the attribute my_square and raising an exception"""
-    print(type(my_square))
-    print(my_square.__dict__)
-
-    try:
-        print(my_square.size)
-    except AttributeError as e:
-        print(e)
-
-    try:
-        print(my_square.__size)
-    except AttributeError as e:
-        print(e)
+     def get_size(self):
+         """Gets size of the square
+            
+           Return:
+           int: the size of the square
+         """
+         return self.__size  
