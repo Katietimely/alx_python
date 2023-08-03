@@ -1,41 +1,93 @@
 #!/usr/bin/python3
 """
-module of a square class with private and public attributes
+This class represent a square with a given size
+
+Attribute:
+    size(int):The size of the square(private attribute)
 """
 class Square:
+     """This class represnt a square with a given size
+        _size(int): The size of the square(private attribute).
+     """
      def __init__(self, size=0):
-        self.__size = size
-        """ this is a method(function) with just one arguement and the getter and setter are 
-        used to manage an attribute
-        """
+        """ intialize a square object with an optional size
 
-        @property
-        def size(self):
-            return self.__size
-        
-        @size.setter
-        def size(self, value):
-          if not isinstance(value, int):
+        Args:
+           size(int): the size of the square(default is 0)
+        Raises:
+            typeerror:if size is not an integer
+            valueerror:if the size is less than  0
+          """
+        if not isinstance(size, int):
             raise TypeError("size must be an integer")
-          
-          if value < 0:
+        if size < 0:
             raise ValueError("size must be >= 0")
-          self.__size = value
-          
-     def area(self):
-         """A method defining the area of a given space """
-         return self.__size ** 2
         
-my_square = Square(89)
-"""a basic method decribing the attribute my_square and raising an exception"""
-print("Area: {} for size: {}".format(my_square.area(), my_square.size))
+        self.__size = size
 
-my_square.size = 3
-"""a basic method decribing the attribute my_square and raising an exception"""
-print("Area: {} for size: {}".format(my_square.area(), my_square.size))
+     @property
+     def size(self):
+         """
+         @property decorator:
+         Allows one to create getters and setters method for a private attribute.
+         Enables controlled access to that attribute while maintaining encapsulation
+         """
+         return self.__size
 
-try:
-   my_square.size = "5 feet"
-   print("Area: {} for size: {}".format(my_square.area(), my_square.size))
-except Exception as e:
-   print(e)  
+
+     @size.setter
+     def size(self, value):
+         """
+         @size.setter:
+         Decorator used in conjunction with @property to define the setter method for a property
+         """
+         if not isinstance(value, int):
+             raise TypeError("size must be an integer")
+         if value < 0:
+             raise ValueError("size must be >= 0")
+         
+         self.__size = value
+
+     def area(self):
+         """calculate the area of the square
+         Return:
+             int: The area of square
+         """
+         return self.__size ** 2
+         return area(self.__size ** 2)
+      
+     def perimeter(self):
+         """claculate the perimeter of the square
+           returns:
+               int: the perimeter of the square
+         """
+         return 4 * self.__size
+     
+     def get_size(self):
+         """Gets size of the square
+            
+           Return:
+           int: the size of the square
+         """
+         return self.__size
+     
+     def set_size(self, new_size):
+         """
+          sets the size of thesquare to a new value
+
+         Args:
+            new_size(int): the new size to set
+
+         Raises:
+             TypeError: if the new size is not an integer
+             ValueError: if the new size < 0
+         """
+         if not isinstance(new_size, int):
+             raise TypeError("size must be an integer")
+         if new_size < 0:
+             raise ValueError("size must be >= 0")
+         self.__size = new_size
+         
+
+
+    
