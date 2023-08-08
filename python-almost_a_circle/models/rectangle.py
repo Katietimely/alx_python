@@ -136,3 +136,21 @@ class Rectangle(Base):
         self.__y = value
 
 
+def area(self):
+    """
+    a method of area(int) a public instance
+
+     Returns:
+         the value of area(int) after multiplying width and height
+    """
+    return self.width * self.height
+        
+def display(self):
+     """
+       a method of display(#) a public instance
+
+     Prints:
+         the area as regards to width * height (#)
+            """
+     for _ in range(self.height):
+         print('#' * self.width)
