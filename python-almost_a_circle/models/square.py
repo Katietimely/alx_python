@@ -145,3 +145,86 @@ class Rectangle(Base):
           """
          return self.width * self.height
         
+     def display(self):
+        """
+         a method of display(#) a public instance
+
+        Prints:
+             the area as regards to width * height (#)
+         """
+        for _ in range(self.y):
+            print()
+        for _ in range(self.height):
+             print(' ' * self.x + '#' * self.width)
+
+     def __str__(self):
+          """
+           A public method to return a string
+
+           Returns:
+              a string containing the width, height, id ,x and y coordinates
+          """
+          return "[Rectangle] ({}) {}/{}  -  {}/{}".format(self.id, self.x, self.y, self.width, self.height)
+     
+     def update(self, *args, **kwargs):
+         """
+         An update on the attribute following args and kwargs
+
+         Args:
+           *args: with list but no keyword 
+           **kwargs: the set of distionary with keywords
+         """
+         if len(args) > 0:
+             self.id = args[0]
+         if len(args) > 1:
+             self.width = args[1]
+         if len(args) > 2:
+             self.height = args[2]
+         if len(args) > 3:
+            self.x = args[3]
+         if len(args) > 4:
+             self.y = args[4]
+         for key, value in kwargs.items():
+             setattr(self, key, value)
+
+
+class Square(Rectangle):
+    def __init__(self, width, height, x=0, y=0, id=None):
+        """
+         a method of square
+          Args:
+         id(int): the id of a rectangle, if not provided a new one is generated
+         width(int): the width of a rectangle
+         height(int): the height of a rectangle
+         x(int): the x-axis of the rectangle's position, taken initially to be zero
+         y(int): the y-axis of the rectangle's position, taken initially to be zero
+
+         Raises:
+             typerror: the width, height, x and y must be an integer
+             valueerror: the width, height, x and y must be > 0
+         """
+        
+        super().__init__(width, height, x, y, id)
+
+    @property
+    def size(self):
+        """the sizeof the square"""
+        return self.width
+    
+    @size.setter
+    def size(self, value):
+        """a method instance of size following the width and height
+        """
+        self.height = value
+        self.width = value
+    
+    def __str__(self):
+          """
+          a public instance of size,overriding method
+
+          Returns:
+              a string containing the width, height, id ,x and y coordinates
+            
+          """
+          return "[Rectangle] ({}) {}/{}  -  {}/{}".format(self.id, self.x, self.y, self.width, self.height)
+         

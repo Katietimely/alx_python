@@ -43,8 +43,8 @@ class Rectangle(BaseGeometry):
            typeerror: if the weight or height is not an integer
            valuerror: if the weight or height is less or equal to 0
         """
-        self.__width = width
-        self.__height = height
+        self.width = width
+        self.height = height
         self.integer_validator("width", width)
         self.integer_validator("height", height)
 
