@@ -160,7 +160,7 @@ class Rectangle(Base):
          """
          return ("[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y, self.width, self.height))
 
-     def update(self, *args):
+     def update(self, *args, **kwargs):
          """
          updatind the attributes of the rectangle instance
 
@@ -172,6 +172,11 @@ class Rectangle(Base):
          for i, arg in enumerate(args):
              if i < len(attribute):
                  setattr(self, attribute[i], arg)
+
+         if kwargs:
+             for key, value in kwargs.items():
+                 setattr(self, key, value)
+             
         
          
 
