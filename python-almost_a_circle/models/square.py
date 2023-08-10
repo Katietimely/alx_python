@@ -10,7 +10,7 @@ class Square(Rectangle):
     This class inherits the attributes of rectangle
     """
 
-    def __init__(self, width, height, x=0, y=0, id=None):
+    def __init__(self, size, x=0, y=0, id=None):
         """
         initializes the square object  with size , posdition
 
@@ -20,7 +20,7 @@ class Square(Rectangle):
            y(int): the y-coordinates or default becomes 0
            id(int): the Id of the square , if not provided another is assigned
         """
-        super().__init__(width, height, x, y, id)
+        super().__init__(size, size, x, y, id)
     
     @property
     def size(self):
@@ -39,4 +39,4 @@ class Square(Rectangle):
         Returns:
           str:returns a formatted string
         """
-        return ("[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y, self.width, self.height))
+        return ("[Rectangle] ({}) {}/{} - {}".format(self.id, self.x, self.y, self.width))
