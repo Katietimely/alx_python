@@ -156,6 +156,6 @@ class Rectangle(Base):
          """
            an instance thatreturns a string
          """
-         return "[Rectangle] ({}) {}/{}".format(self.id, self.x, self.y, self.width, self.height)
+         return ("[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y, self.width, self.height))
              
         
