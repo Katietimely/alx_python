@@ -144,4 +144,13 @@ class Rectangle(Base):
            the value of area(int) after multiplying width and height
           """
          return self.width * self.height
+     def display(self):
+         """
+         display a rectangle area using '# as height
+
+         """
+         for _ in range(self.height):
+             print('#' * self.width)
+
+             
         
