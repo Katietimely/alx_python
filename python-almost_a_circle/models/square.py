@@ -39,4 +39,4 @@ class Square(Rectangle):
         Returns:
           str:returns a formatted string
         """
-        return ("[Rectangle] ({}) {}/{} - {}".format(self.id, self.x, self.y, self.width))
+        return ("[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y, self.width))
