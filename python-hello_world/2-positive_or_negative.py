@@ -3,8 +3,9 @@ number = random.randint(-10, 10)
 # YOUR CODE HERE
 
 if number > 0:
-   print("{} is positive".format(number))
+   print(str(number) + " is positive",end="\n")
 elif number == 0:
-    print("{} is zero".format(number))
-else:
-    print("{} is negative and less th".format(number))
+   print(str(number) + " is zero",end="\n")
+elif number < 0:
+   print(str(number) + " is neagative",end="\n")
+   
