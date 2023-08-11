@@ -16,8 +16,8 @@ class BaseGeometry(metaclass=BaseGeometryMetaClass):
     pass 
 
     def area(self):
-        """method area to get result
-                  calculates the area
+        """method area to get result and calculates the area
+        
         Raises:
           Exception: with the message "area not implemented
         """
