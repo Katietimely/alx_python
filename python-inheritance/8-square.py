@@ -23,6 +23,7 @@ class Square(Rectangle):
             TypeError: if size is not an integer
             ValueError: if size is less then or equal to 0.
         """
+        self.__size = size
         self.integer_validator("size", size)
         super().__init__(size, size)
 
