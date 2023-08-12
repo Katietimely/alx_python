@@ -1,6 +1,15 @@
 
 def common_element(set_1, set_2):
+    common_set = set()
 
-    return set_1.intersection(set_2)
+    for element in set_1:
+        if element in set_2:
+            common_set.add(element)
 
+    return common_set
+
+set1 = {1, 2, 3, 4, 5}
+set2 = {4, 5, 6, 7, 8}
+
+common_element_set = common_element(set1, set2)
    
