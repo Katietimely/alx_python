@@ -6,37 +6,7 @@ class BaseGeometryMetaClass(type):
     def __dir__(cls):
         return [attribute for attribute in super().__dir__() if attribute != '__init_subclass__']
     
-class BaseGeometry(metaclass=BaseGeometryMetaClass):
-    """
-    A class inheriting the class BaseGeometry
-    """
-    def __dir__(self): 
-        return [attribute for attribute in super().__dir__() if attribute != '__init_subclass__']
-    pass 
-
-    def area(self):
-        """method area to get result
-        Args:
-          name(str): the name of the value
-          value: the value has to be validated
-         Raises:
-          TypeError: if the value is not an integer
-          ValueError: if the value 
-        """
-        raise Exception("area() is not implemented")
-
-    def integer_validator(self, name, value):
-        """method integer_validator to determine whether an integer or not
-        Args:
-          name(str): the name of the value
-          value: the value has to be validated
-         Raises:
-          TypeError: if the value is not an integer
-          ValueError: if the value i
-        """
-        if not isinstance(value, int):
-            raise TypeEr
-    
+Rectangle = __import__('7-rectangle').Rectangle
 
 class Square(Rectangle):
     """
@@ -55,6 +25,16 @@ class Square(Rectangle):
         """
         self.integer_validator("size", size)
         super().__init__(size, size)
+
+       # I also added this to fix the error
+    def __dir__(cls):
+        """
+        Metaclass fix
+        """
+        return [
+            attribute for attribute in super().__dir__()
+            if attribute != '__init_subclass__'
+        ]
 
     
 
