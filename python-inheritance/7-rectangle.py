@@ -1,60 +1,69 @@
-#!/usr/bin/python3
 """
-A base class representing the geometry
+    A base class representing geometry.
 
-this class is intended to be used as a base for other geometry related classes
+    This class is intended to be used as a base for other geometry-related classes.
+    It currently does not have any attributes or methods defined.
 
-Public methods:
--area(self): calculate the area of the geometry
- Raises:
-   NotImplementedError: this method is not implemented in the class base
-
--integer_validator(self, name, value): validates an integer value
-Parameters:
-            name(str): the name of the value being validated
-            value: the value to be validated
+    Public Methods:
+    - area(self): Calculate the area of the geometry.
         Raises:
-             typeerror: if the value is not an integer
-             valueerror: if the value is less than or equal to 0
-"""
+            NotImplementedError: This method is not implemented in the base class.
+
+    - integer_validator(self, name, value): Validate an integer value.
+        Parameters:
+            name (str): The name of the value being validated (assumed to be a string).
+            value: The value to be validated.
+        Raises:
+            TypeError: If the value is not an integer.
+            ValueError: If the value is less than or equal to 0.
+    """
+
+
 class BaseGeometry:
     """
-    A base class representing geometry
+    A base class representing geometry.
 
-    this class is intended to be used as a base for other geometry
+    This class is intended to be used as a base for other geometry-related classes.
+    It currently does not have any attributes or methods defined.
     """
+
+
 class BaseGeometryMetaClass(type):
     def __dir__(cls):
         return [attribute for attribute in super().__dir__() if attribute != '__init_subclass__']
 
+
 class BaseGeometry(metaclass=BaseGeometryMetaClass):
     """
-     a base class representing geometry
+    A base class representing geometry
     """
+
     def __dir__(self):
         """
-        customization of the  attributes visible when calling "dir()
+        Customization of the attributes visible when calling `dir()`.
         """
         return [attribute for attribute in super().__dir__() if attribute != '__init_subclass__']
 
-        
     def area(self):
         """
-        calculate the area of geometry
-    
+        Calculate the area of the geometry.
+
+        Raises:
+            Exception: This method is not implemented in the base class.
         """
-        raise Exception("area() is  not implemented")
+        raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
         """
-        validates an integer value.
+        Validate an integer value.
 
         Parameters:
-            name(str): the name of the value being validated
-            value: the value to be validated
+            name (str): The name of the value being validated (assumed to be a string).
+            value: The value to be validated.
+
         Raises:
-             typeerror: if the value is not an integer
-             valueerror: if the value is less than or equal to 0
+            TypeError: If the value is not an integer.
+            ValueError: If the value is less than or equal to 0.
         """
         if not isinstance(value, int):
             raise TypeError(f"{name} must be an integer")
@@ -62,42 +71,44 @@ class BaseGeometry(metaclass=BaseGeometryMetaClass):
         if value <= 0:
             raise ValueError(f"{name} must be greater than 0")
 
+
 class Rectangle(BaseGeometry):
+    """
+    A class representing a rectangle, inheriting from BaseGeometry.
+
+    Public Methods:
+    - __init__(self, width, height): Initialize a rectangle with width and height.
+    - area(self): Calculate the area of the rectangle.
+    - __str__(self): Return a string representation of the rectangle.
+    """
+
+    def __init__(self, width, height):
         """
-        a class representing a rectangle inheriting Basegeometry
+        Initialize a rectangle with width and height.
 
-        Public methods:
-        - __init__(self, width, height): initialize a rectangle with width and height
-        -  area(self): calculate the area of the 
-        - __str_(self): returns a string representation of the rectangle
+        Parameters:
+            width (int): The width of the rectangle.
+            height (int): The height of the rectangle.
         """
-        def __init__(self, width, height):
-            """
-            initialize a rectangle with width and height
+        self.__width = width
+        self.__height = height
+        self.integer_validator("width", width)
+        self.integer_validator("height", height)
 
-            Parameters:
-             width(int): the width of the rectangle 
-             height(int): the height of the rectangle
-            """
-            self.__width = width
-            self.__height = height
-            self.integer_validator("width", width)
-            self.integer_validator("height", height)
+    def area(self):
+        """
+        Calculate the area of the rectangle.
 
-        def area(self):
-            """
-            calculate area of the rectangle
+        Returns:
+            int: The area of the rectangle (width * height).
+        """
+        return self.__width * self.__height
 
-            Returns:
-               int: the area of the rectangle (width * height)
-            """
-            return self.__width * self.__height
+    def __str__(self):
+        """
+        Return a string representation of the rectangle.
 
-        def str(self):
-            """ 
-             returns a string representation of the rectangle
-
-             Returns:
-                str: a string with rectangle description in the format '[Rectangle] <width>/<height>'.
-            """
-            return f"[Rectangle] {self.__width}/{self.__height}"
+        Returns:
+            str: A string with the rectangle description in the format '[Rectangle] <width>/<height>'.
+        """
+        return f"[Rectangle] {self.__width}/{self.__height}"

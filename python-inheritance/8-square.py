@@ -1,51 +1,65 @@
-#!/usr/bin/python3
 """
-A base class representing the geometry
+    A base class representing geometry.
 
-this class is intended to be used as a base for other geometry related classes
+    It is to be used as a base for other geometry-related classes.
+    It currently does not have any attributes or methods defined.
 
-Public methods:
--area(self): calculate the area of the geometry
- Raises:
-   NotImplementedError: this method is not implemented in the class base
+    Public Methods:
+    - area(self): Calculate the area of the geometry.
+        Raises:
+         Exception: This method is not implemented in the base class.
 
--integer_validator(self, name, value): validates an integer value
-Parameters:
-            name(str): the name of the value being validated
-            value: the value to be validated
-Raises:
-             typeerror: if the value is not an integer
-             valueerror: if the value is less than or equal to 0
-"""
+    - integer_validator(self, name, value): Validate an integer value.
+        Parameters:
+         name (str): The name of the value being validated.
+         value: The value to be validated.
+        Raises:
+         TypeError: If the value is not an integer.
+         ValueError: If the value is less than or equal to 0.
+    """
+
+
 class BaseGeometry:
-    """basegeometry class"""
+    """
+    A base class representing geometry.
+
+    It is to be used as a base for other geometry-related classes.
+    It currently does not have any attributes or methods defined.
+    """
+
+
 class BaseGeometryMetaClass(type):
     def __dir__(cls):
-        return [attribute for attribute in super().__dir__() if attribute != '__init_subclass__']
-    
-    #i imported than writing the whole code
-Rectangle = __import__('7-rectangle').Rectangle
+        return [
+            attribute for attribute in super().__dir__()
+            if attribute != '__init_subclass__'
+        ]
+
+
+# I imported rather than writing the whole code
+Rectangle = __import__("7-rectangle").Rectangle
+
 
 class Square(Rectangle):
     """
-    a class of square inheriting from its parent-attributes
+    A class representing a square, inheriting from Rectangle.
 
-    Public-methods:
-    -__init__(self, size)
+    Public Methods:
+    - __init__(self, size): Initialize a square with size.
     """
+
     def __init__(self, size):
         """
-        A  method to pass out an attribute of size
+        Initialize a square with size.
 
-        Parameter:
-            size(int): the size of the square
-
+        Parameters:
+            size (int): The size of the square (both width and height).
         """
         self.__size = size
         self.integer_validator("size", size)
         super().__init__(size, size)
 
-       # I also added this to fix the error
+    # I also added this to fix the error
     def __dir__(cls):
         """
         Metaclass fix
@@ -53,9 +67,3 @@ class Square(Rectangle):
         return [
             attribute for attribute in super().__dir__()
             if attribute != '__init_subclass__']
-
-    
-
-    
-    
-
