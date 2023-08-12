@@ -1,4 +1,4 @@
-#!/usr/bin/python
+
 """
 A base class representing the geometry
 
@@ -16,18 +16,22 @@ class BaseGeometryMetaClass(type):
 
 class BaseGeometry(metaclass=BaseGeometryMetaClass):
     """
-    a base class repersenting geometry
+     a base class representing geometry
     """
     def __dir__(self):
         """
         customization of the  attributes visible when calling "dir()
         """
+        return [attribute for attribute in super().__dir__() if attribute != '__init_subclass__']
+
+        
     def area(self):
         """
         calculate the area of geometry
     
         """
         raise Exception("area() is  not implemented")
+
     def integer_validator(self, name, value):
         """
         validates an integer value.
@@ -41,6 +45,7 @@ class BaseGeometry(metaclass=BaseGeometryMetaClass):
         """
         if not isinstance(value, int):
             raise TypeError(f"{name} must be an integer")
+            
         if value <= 0:
             raise ValueError(f"{name} must be greater than 0")
 
