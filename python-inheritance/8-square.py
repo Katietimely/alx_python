@@ -18,6 +18,7 @@
          ValueError: If the value is less than or equal to 0.
     """
 
+
 class BaseGeometry:
     """
     A base class representing geometry.
@@ -25,6 +26,7 @@ class BaseGeometry:
     It is to be used as a base for other geometry-related classes.
     It currently does not have any attributes or methods defined.
     """
+
 
 class BaseGeometryMetaClass(type):
     def __dir__(cls):
@@ -62,6 +64,4 @@ class Square(Rectangle):
         """
         Metaclass fix
         """
-        return [
-            attribute for attribute in super().__dir__()
-            if attribute != '__init_subclass__']
+        return [attribute for attribute in super().__dir__()if attribute != '__init_subclass__']
