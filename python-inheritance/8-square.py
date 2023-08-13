@@ -64,5 +64,5 @@ class Square(Rectangle):
         """
         Metaclass fix
         """
-        
         return [attribute for attribute in super().__dir__()if attribute != '__init_subclass__']
+        
