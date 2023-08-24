@@ -14,11 +14,11 @@ cursor = database.cursor()
 state_name = sys.argv[4]
 
 cursor.execute(
-            "SELECT id, name FROM states WHERE BINARY name LIKE 'N%' ORDER BY id ASC")
+            "SELECT id, name FROM states WHERE BINARY name LIKE 'N%' ORDER BY id ASC", (state_name,))
 states = cursor.fetchall()
 
 for state in states:
-    print(state)
+    print("({}, '{}')".format(state[0], state[1]))
 
 cursor.close()
 database.close()
