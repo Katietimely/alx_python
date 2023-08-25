@@ -2,12 +2,13 @@
 import MySQLdb
 import sys
 
-username, password, database, state_name = sys.argv[1:5]
+
 # connecting a cursor
 database = MySQLdb.connect(host="localhost", port=3306,
                            user=sys.argv[1],
                            passwd=sys.argv[2],
-                           db=sys.argv[3])
+                           db=sys.argv[3],
+                           state_name=sys.argv[4])
 
 
 # creating a cursor

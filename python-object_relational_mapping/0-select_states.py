@@ -13,8 +13,7 @@ database = MySQLdb.connect(
     
 # create a cursor to navigate the datebase path 
 cursor = database.cursor()
-query = "SELECT * FROM states ORDER BY id ASC"
-cursor.execute(query)
+cursor.execute("SELECT id,name FROM states ORDER BY id ASC")
 states = cursor.fetchall()
 
 for state in states:
