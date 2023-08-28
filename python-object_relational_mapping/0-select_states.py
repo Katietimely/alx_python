@@ -7,8 +7,7 @@ database = MySQLdb.connect(
             host="localhost",port=3306,
             user=sys.argv[1],
             passwd=sys.argv[2],
-            db=sys.argv[3]
-            )
+            db=sys.argv[3])
     
 # create a cursor to navigate the datebase path 
 cursor = database.cursor()
