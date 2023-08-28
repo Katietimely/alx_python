@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 """
 this module is called flask and imported from flask
 """
@@ -23,6 +22,13 @@ def hbnb():
 def c_with_text(text):
     decoded_text = unquote(text).replace('_', ' ')
     return "C {}".format(decoded_texts)
+
+#route created to the previous text using app route
+@app.route('/Python/', defaults={'text': ' is cool'})
+@app.route('/python/<text>',strict_slashes=False)
+def python_with_text(text):
+    decoded_text = unquote(text).replace('_', ' ')
+    return "Python {}".format(decoded_text)
 
 
 if __name__ == "__main__":

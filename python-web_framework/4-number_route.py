@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 """
 this module is called flask and imported from flask
 """
@@ -24,7 +23,19 @@ def c_with_text(text):
     decoded_text = unquote(text).replace('_', ' ')
     return "C {}".format(decoded_texts)
 
+# route created to the previous text using app route
+@app.route('/Python/', defaults={'text': ' is cool'})
+@app.route('/python/<text>',strict_slashes=False)
+def python_with_text(text):
+    decoded_text = unquote(text).replace('_', ' ')
+    return "Python {}".format(decoded_text)
 
+# route created to by-pass the previous setting
+@ap.route('/number/<n>', strict_slashes=False)
+def n_integer(n):
+    return "{} is a number".format(n)
+
+    
 if __name__ == "__main__":
 # activating the debug: ON
     app.run(debug=True)
