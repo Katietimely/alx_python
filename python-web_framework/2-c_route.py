@@ -3,7 +3,7 @@
 this module is called flask and imported from flask
 """
 from flask import Flask
-from urllib.parse import unquote
+from markupsafe import escape
 
 app = Flask(__name__)
 
@@ -21,8 +21,8 @@ def hbnb():
 #route created to the previous route setting
 @app.route('/c/<text>', strict_slashes=False)
 def c_with_text(text):
-    decoded_text = unquote(text).replace('_', ' ')
-    return "C {}".format(decoded_texts)
+    text = escape(text).replace('_', ' ')
+    return f"C {text}"
 
 
 if __name__ == "__main__":
