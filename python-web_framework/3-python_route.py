@@ -3,9 +3,11 @@ this module is called flask and imported from flask
 """
 from flask import Flask
 from markupsafe import escape
+
+# using flask module
 app = Flask(__name__)
 
-#route created at the localhost
+# route created at the localhost
 @app.route('/', strict_slashes=False)
 def hello_hbnb():
 # a defined function of hello_hbnb to return a string
