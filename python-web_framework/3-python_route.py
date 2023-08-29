@@ -2,8 +2,7 @@
 this module is called flask and imported from flask
 """
 from flask import Flask
-from urllib.parse import unquote
-
+from markupsafe import escape
 app = Flask(__name__)
 
 #route created at the localhost
@@ -20,15 +19,15 @@ def hbnb():
 #route created to the previous route setting
 @app.route('/c/<text>', strict_slashes=False)
 def c_with_text(text):
-    decoded_text = unquote(text).replace('_', ' ')
-    return "C {}".format(decoded_texts)
+    text = escape(text).replace('_', ' ')
+    return f"C {text}"
 
 #route created to the previous text using app route
 @app.route('/Python/', defaults={'text': ' is cool'})
 @app.route('/python/<text>',strict_slashes=False)
 def python_with_text(text):
-    decoded_text = unquote(text).replace('_', ' ')
-    return "Python {}".format(decoded_text)
+    text = escape(text).replace('_', ' ')
+    return f"Python {text}"
 
 
 if __name__ == "__main__":
