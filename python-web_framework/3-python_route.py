@@ -4,6 +4,9 @@ this module is called flask and imported from flask
 """
 from flask import Flask
 from markupsafe import escape
+"""
+a module used to bring down all sources
+"""
 
 app = Flask(__name__)
 
