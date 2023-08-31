@@ -1,13 +1,13 @@
+#!/usr/bin/python3
 """
 this module is called flask and imported from flask
 """
 from flask import Flask
 from markupsafe import escape
 
-# using flask module
 app = Flask(__name__)
 
-# route created at the localhost
+#route created at the localhost
 @app.route('/', strict_slashes=False)
 def hello_hbnb():
 # a defined function of hello_hbnb to return a string
@@ -24,7 +24,7 @@ def c_with_text(text):
     text = escape(text).replace('_', ' ')
     return f"C {text}"
 
-#route created to the previous text using app route
+# route created to the previous text using app route
 @app.route('/python/', defaults={'text':'is cool'}, strict_slashes=False)
 @ap.route('/python/<text>')
 def python_with_text(text):
