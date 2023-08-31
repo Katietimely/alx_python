@@ -3,6 +3,7 @@ this module is called flask and imported from flask
 """
 from flask import Flask
 from markupdown import escape
+from flask import template_render
 
 app = Flask(__name__)
 
@@ -24,16 +25,15 @@ def c_with_text(text):
     return f"C {text}"
 
 # route created to the previous text using app route
-@app.route('/Python/', defaults={'text': ' is cool'})
 @app.route('/python/<text>',strict_slashes=False)
-def python_with_text(text):
+def python_with_text(defaults="is cool"):
     text = escape(text).replace('_', ' ')
     return f"Python {text}"
 
 # route created to by-pass the previous setting
 @ap.route('/number/<n>', strict_slashes=False)
 def n_integer(n):
-    return f"{n} is a number"
+    return template_render("5-number.html", n=n)
 
     
 if __name__ == "__main__":
