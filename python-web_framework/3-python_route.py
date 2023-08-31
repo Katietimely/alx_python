@@ -28,8 +28,8 @@ def c_with_text(text):
 @app.route('/python/', defaults={'text':'is cool'}, strict_slashes=False)
 @ap.route('/python/<text>')
 def python_with_text(text):
-    text = escape(text).replace('_', ' ')
-    return f"Python {text}"
+    # replaces all underscores with spaces
+    return f"Python {text.replace('_', ' ')}"
 
 
 if __name__ == "__main__":

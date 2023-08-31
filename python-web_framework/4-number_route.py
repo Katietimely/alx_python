@@ -24,10 +24,11 @@ def c_with_text(text):
     return f"C {text}"
 
 # route created to the previous text using app route
-@app.route('/python/<text>',strict_slashes=False)
-def python_with_text(text="is cool"):
-    text = escape(text).replace('_', ' ')
-    return f"Python {text}"
+@app.route('/python/', defaults={'text':'is cool'}, strict_slashes=False)
+@ap.route('/python/<text>')
+def python_with_text(text):
+    # replaces all underscores with spaces
+    return f"Python {text.replace('_', ' ')}"
 
 # route created to by-pass the previous setting
 @ap.route('/number/int:<n>', strict_slashes=False)
