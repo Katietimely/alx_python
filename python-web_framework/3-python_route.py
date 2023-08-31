@@ -7,8 +7,10 @@ from markupsafe import escape
 """
 a module used to bring down all sources
 """
-
 app = Flask(__name__)
+"""
+a module called flask used to bring all sourcews
+"""
 
 #route created at the localhost
 @app.route('/', strict_slashes=False)
@@ -37,4 +39,5 @@ def python_with_text(text):
 
 if __name__ == "__main__":
 # activating the debug: ON
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0", port="5000")
+    
