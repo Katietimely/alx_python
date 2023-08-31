@@ -30,7 +30,7 @@ def python_with_text(text="is cool"):
     return f"Python {text}"
 
 # route created to by-pass the previous setting
-@ap.route('/number/<n>', strict_slashes=False)
+@ap.route('/number/int:<n>', strict_slashes=False)
 def n_integer(n):
     return f"{n} is a number"
 

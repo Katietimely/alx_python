@@ -25,8 +25,9 @@ def c_with_text(text):
     return f"C {text}"
 
 #route created to the previous text using app route
-@app.route('/python/<text>',strict_slashes=False)
-def python_with_text(text="is cool"):
+@app.route('/python/', defaults={'text':'is cool'}, strict_slashes=False)
+@ap.route('/python/<text>')
+def python_with_text(text):
     text = escape(text).replace('_', ' ')
     return f"Python {text}"
 
