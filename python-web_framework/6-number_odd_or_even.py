@@ -43,18 +43,22 @@ def python(text):
 def number(n):
     return f"{n} is a number"
 
+
 @app.route("/number_template/<int:n>", strict_slashes=False)
 def n_temp(n):
-    return render_template('templates/5-number.html', n=n)
+    return render_template('5-number.html', n=n)
 
 
 @app.route("/number_odd_or_even/<int:n>",strict_slashes=False)
 def n_odd_or_even(n):
+    """
+    function to get an integer
+    """
     if n % 2 == 0:
-         result = "even"
+         result = 'even'
     else:
-        result = "odd"
-    return render_template('templates/6-number_odd_or_even.html', n=n, result=result)
+         result = 'odd'
+    return render_template('6-number_odd_or_even.html', n=n, result=result)
 
 
 if __name__ == "__main__":
