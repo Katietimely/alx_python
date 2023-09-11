@@ -2,7 +2,6 @@
 importing from flask
 """
 from flask import Flask, render_template
-from markupsafe import escape
 
 """
 this is needed so flask knows where to look up resources
@@ -46,10 +45,7 @@ def number(n):
 
 @app.route("/number_template/<int:n>", strict_slashes=False)
 def number_template(n):
-    """
-    defined a number
-    """
-    return render_template('5-number.html', n=n)
+    return render_template("5-number.html", n=n)
 
 
 if __name__ == "__main__":
