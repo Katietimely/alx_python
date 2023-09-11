@@ -12,6 +12,7 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
+    # fetch first state if it exists else print nothing
     state = session.query(State).order_by(State.id).first()
     if state:
         print("{}: {}".format(state.id, state.name))
