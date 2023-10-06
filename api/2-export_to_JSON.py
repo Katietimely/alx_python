@@ -1,48 +1,42 @@
-import requests
 import json
+import requests
 import sys
 
-def get_employee_data(employee_id):
-    user_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
-    todos_url = f"https://jsonplaceholder.typicode.com/uders/{employee_id}"
 
-    user_response = requests.get(user_url)
-    todos_response = requests.get(todos_url)
+if len(sys.argv) != 2:
+    print("Usage: python3 0-gather_data_from_an_API.py <employee_id>")
+    sys.exit(1)
 
-    user_data = user_response.json()
-    todos_data = todos_response.json()
+employee_id = sys.argv[1]
+url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
+response = requests.get(url)
+employee_data = response.json()
 
-    return user_data, todos_data
+if "id" not in employee_data:
+    print(f"No employee found with ID {employee_id}")
+    sys.exit(1)
 
-def display_todo_progress(user_data, todos_data):
-    employee_name = user_data['name']
-    total_tasks = len(todos_data)
-    complete_tasks = [task for task in todos_data if task['completed']]
+url = f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos"
+response = requests.get(url)
+todos = response.json()
 
-    print(f"Employee  {employee_name} is done with tasks({len(complete_task)}/{total_tasks}):")
+employee_name = employee_data["username"]
 
-    for task in complete_tasks:
-        print(f"    {task['title']}")
+total_tasks = len(todos)
+done_tasks = sum(1 for todo in todos if todo.get("completed"))
 
-    return user_data['id'], user_data['username'], complete_tasks
+# Prepare the data in JSON format
+data = {
+    "USER_ID": [{
+        "task": todo["title"],
+        "completed": todo["completed"],
+        "username": employee_name
+    } for todo in todos]
+}
 
+# Write the JSON data to a file
+filename = f"{employee_id}.json"
+with open(filename, "w") as json_file:
+    json.dump({employee_id: data}, json_file, indent=4)
 
-def export_to_json(user_id, username, complete_tasks):
-    data = {user_id: [{"task": task['title'], "completed": task['completed'], "username": username} for task in complete_tasks]}
-    filename = f"{user_id}.json"
-    with open(filename, 'w') as json_file:
-        json.dump(data, json_file)
-
-
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python3 script.py <employee_id>")
-        sys.exit(1)
-
-    employee_id = int(sys.argv[1])
-    user_data, todos_data = get_employee_data(employee_id)
-
-    user_id, username, complete_tasks = display_todo_progress(user_data, todos_data)
-    export_to_json(user_id, username, complete_tasks)
-
-    
+print(f"Data exported to {filename}")
