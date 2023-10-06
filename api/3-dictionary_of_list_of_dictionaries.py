@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-import requests
 import json
+import requests
 
 def get_employee_data(employee_id):
     user_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
