@@ -1,39 +1,36 @@
-#!/usr/bin/python3
-
 import requests
 import sys
 
-def get_employee_data(employee_id):
-    user_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
-    todos_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos"
+"""
+The script accepts an integer as a parameter, 
+which is the employee ID. It then retrieves the name of the employee from the endpoint
+"""
+if len(sys.argv) != 2:
+    print("Usage: python3 0-gather_data_from_an_API.py <employee_id>")
+    sys.exit(1)
 
-    user_response = requests.get(user_url)
-    todos_response = requests.get(todos_url)
+"""
+It calculates the number of completed tasks and total tasks and prints them in the required format. 
+Finally, it prints the title of completed tasks.
+"""
+employee_id = sys.argv[1]
+url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
+response = requests.get(url)
+employee_name = response.json().get("name")
 
-    user_data = user_response.json()
-    todos_data = todos_response.json()
+if not employee_name:
+    print(f"No employee found with ID {employee_id}")
+    sys.exit(1)
 
-    return user_data, todos_data
+url = f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos"
+response = requests.get(url)
+todos = response.json()
 
+total_tasks = len(todos)
+done_tasks = sum(1 for todo in todos if todo.get("completed"))
 
-def display_todo_progress(user_data, todos_data):
-    employee_name = user_data['name']
-    total_tasks = len(todos_data)
-    complete_tasks = [task for task in todos_data if task['completed']]
-
-    print(f"Employee {employee_name} is done with tasks ({len(complete_tasks)}):")
-
-
-    for task in complete_tasks:
-        print(f"    {task['title' ]}")
-
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python3 script.py <employee_id>")
-        sys.exit(1)
-
-    employee_id = int(sys.argv)
-    user_data, todos_data = get_employee_data(employee_id)
-
-    display_todo_progress(user_data, todos_data)
-
+print(
+    f"Employee {employee_name} is done with tasks({done_tasks}/{total_tasks}):")
+for todo in todos:
+    if todo.get("completed"):
+        print(f"\t {todo.get('title')}")
